@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Supervision Computer Master — Admin</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><div class="brand">SUPERVISION <b>COMPUTER MASTER</b></div><span class="tag">ADMIN CONSOLE <button id="logout" class="secondary">Log out</button></span></header>
+<main>
+  <section class="panel">
+    <h1>Remote support dashboard</h1>
+    <p>Create a one-time invitation. The customer must open it and approve screen sharing.</p>
+    <button id="create">Generate support link</button>
+    <div id="invite" class="invite hidden"></div>
+  </section>
+  <section class="panel">
+    <h2>Incoming support sessions</h2>
+    <div id="sessions" class="muted">Waiting for a customer to connect…</div>
+  </section>
+  <section class="panel">
+    <h2>Live customer screen</h2>
+    <video id="screen" autoplay playsinline tabindex="0"></video>
+    <div class="actions"><button id="control" disabled>Take control</button><button class="danger" id="end" disabled>End session</button><span id="status" class="muted">No active session</span></div>
+  </section>
+  <p class="notice">Security note: access is protected by a single shared admin password. Before wider deployment add per-user accounts, audit logs, and HTTPS.</p>
+</main>
+<script src="/socket.io/socket.io.js"></script><script src="/admin.js"></script>
+</body></html>

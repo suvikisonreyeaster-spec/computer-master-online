@@ -1,0 +1,16 @@
+:root{font-family:Inter,system-ui,Arial,sans-serif;color:#17251e;background:#f2f7f3}
+*{box-sizing:border-box}body{margin:0}header{background:#123d2b;color:#fff;padding:18px max(20px,calc((100% - 1050px)/2));display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-weight:800;letter-spacing:.04em}.brand b{color:#a8e6bd}.tag{font-size:11px;letter-spacing:.12em;color:#c9e8d3}
+main{max-width:1050px;margin:32px auto;padding:0 18px;display:grid;gap:18px}.narrow{max-width:700px}
+.panel{background:white;border:1px solid #dce9df;border-radius:16px;padding:24px;box-shadow:0 8px 25px #183d2910}
+h1{font-size:25px;margin:0 0 10px}h2{font-size:19px;margin:0 0 14px}p,li{line-height:1.55;color:#52645a}
+button{border:0;border-radius:9px;padding:12px 17px;background:#167346;color:white;font-weight:700;cursor:pointer;margin:6px 6px 6px 0}
+button:disabled{opacity:.45;cursor:not-allowed}.secondary{background:#e7efe9;color:#1d5137}.danger{background:#b83232}
+.invite{margin-top:16px;padding:14px;background:#eff8f1;border-radius:10px;overflow-wrap:anywhere}.hidden{display:none}
+video{width:100%;max-height:600px;background:#101713;border-radius:12px;margin-top:12px;min-height:160px;object-fit:contain}
+.muted{color:#718078;font-size:14px}.notice{font-size:13px;color:#805d25}.actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+input[type=password],input[type=text]{width:100%;padding:12px;border:1px solid #cfe0d4;border-radius:9px;font:inherit;margin:6px 0}
+.tag button{margin:0 0 0 10px;padding:6px 10px;font-size:11px}
+
+video.controlling{outline:3px solid #167346;cursor:crosshair}
+video:focus{outline-offset:2px}

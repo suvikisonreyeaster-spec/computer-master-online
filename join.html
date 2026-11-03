@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Join Computer Master Support</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><div class="brand">SUPERVISION <b>COMPUTER MASTER</b></div><span class="tag">CUSTOMER SUPPORT</span></header>
+<main class="narrow">
+  <section class="panel">
+    <h1>Connect to your support technician</h1>
+    <p>You are about to share your screen with the support administrator. Only continue if you requested this help and trust the person who sent you this link.</p>
+    <ul><li>Your browser will ask you to choose what to share.</li><li>You can stop sharing at any time using your browser's sharing control or the button below.</li><li>This link is one-time and expires.</li><li>This browser page lets the technician <b>view</b> your screen only. For remote control, the technician will ask you to use the Computer Master Support app instead.</li></ul>
+    <button id="start" disabled>Share my screen</button>
+    <button id="stop" class="secondary" disabled>Stop sharing</button>
+    <p id="status" class="muted">Checking invitation…</p>
+    <video id="preview" autoplay muted playsinline></video>
+  </section>
+</main>
+<script src="/socket.io/socket.io.js"></script><script src="/join.js"></script>
+</body></html>

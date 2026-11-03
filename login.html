@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin login — Computer Master</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><div class="brand">SUPERVISION <b>COMPUTER MASTER</b></div><span class="tag">ADMIN LOGIN</span></header>
+<main class="narrow">
+  <section class="panel">
+    <h1>Administrator login</h1>
+    <p>Enter your administrator username and password to manage support sessions.</p>
+    <input id="username" type="text" autocomplete="username" placeholder="Username" autofocus>
+    <input id="password" type="password" autocomplete="current-password" placeholder="Password">
+    <button id="login">Log in</button>
+    <p id="msg" class="muted" role="alert"></p>
+  </section>
+</main>
+<script>
+const user = document.getElementById("username"), pw = document.getElementById("password"), msg = document.getElementById("msg"), btn = document.getElementById("login");
+async function login() {
+  btn.disabled = true; msg.textContent = "";
+  try {
+    const res = await fetch("/api/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username: user.value, password: pw.value }) });
+    if (res.ok) { location.href = "/admin"; return; }
+    msg.textContent = (await res.json()).error || "Login failed.";
+  } catch { msg.textContent = "Could not reach the server."; }
+  btn.disabled = false;
+}
+btn.onclick = login;
+pw.addEventListener("keydown", e => { if (e.key === "Enter") login(); });
+</script>
+</body></html>

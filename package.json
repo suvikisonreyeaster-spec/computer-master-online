@@ -1,0 +1,18 @@
+{
+  "name": "supervision-computer-master",
+  "version": "0.1.1",
+  "private": true,
+  "description": "Consent-based remote support screen-sharing starter",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}
