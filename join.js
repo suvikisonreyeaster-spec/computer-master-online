@@ -5,6 +5,12 @@ const stopBtn = document.getElementById("stop");
 const statusEl = document.getElementById("status");
 const preview = document.getElementById("preview");
 let stream = null, pc = null, room = null;
+const canShareScreen = window.isSecureContext && !!(navigator.mediaDevices && typeof navigator.mediaDevices.getDisplayMedia === "function");
+
+function unsupportedMessage() {
+  if (!window.isSecureContext) return "Screen sharing requires a secure HTTPS connection. Please reopen this link using HTTPS.";
+  return "This browser cannot share a screen. Please open the link in Chrome or Edge on a computer, or use the Computer Master Support app for remote control.";
+}
 let validated = false, joined = false, adminReady = false, finished = false;
 let pendingCandidates = [];
 
@@ -12,7 +18,16 @@ let pendingCandidates = [];
 // at once made the validation request fail with "already used".
 fetch(`/api/invites/${encodeURIComponent(token)}`)
   .then(r => { if (!r.ok) throw new Error("This invitation has expired or was already used."); return r.json(); })
-  .then(() => { validated = true; statusEl.textContent = "Connecting…"; tryJoin(); })
+  .then(() => {
+    validated = true;
+    if (!canShareScreen) {
+      startBtn.disabled = true;
+      statusEl.textContent = unsupportedMessage();
+      return;
+    }
+    statusEl.textContent = "Connecting…";
+    tryJoin();
+  })
   .catch(e => { statusEl.textContent = e.message; });
 
 function tryJoin() {
@@ -43,6 +58,10 @@ socket.on("session:admin-left", () => {
 });
 
 startBtn.onclick = async () => {
+  if (!canShareScreen) {
+    statusEl.textContent = unsupportedMessage();
+    return;
+  }
   if (!room || finished) return;
   try {
     // The browser/OS displays a permission chooser. Nothing is captured before approval.
